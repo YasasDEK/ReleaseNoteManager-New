@@ -1,0 +1,24 @@
+# Node build environment
+# This will create fresh node environment and build the web application using that
+# FROM node:12.18.0-slim as portal-web-build
+
+# WORKDIR /hms/apps
+# COPY . /hms/apps
+
+# RUN yarn install && yarn build;
+
+# ================================================
+# Web app runtime environment
+# Build done in the previous step will be copied to fresh nginx container
+#
+FROM nginx:1.17.2-alpine
+
+EXPOSE 80
+
+ADD docker/portal_web_nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY build /var/www/localhost/htdocs/build/webapp
+
+CMD ["/bin/sh", "-c", "exec nginx -g 'daemon off;';"]
+
+WORKDIR /var/www/localhost/htdocs

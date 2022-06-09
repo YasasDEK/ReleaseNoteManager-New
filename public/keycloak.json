@@ -1,0 +1,13 @@
+{
+    "realm": "release-note-manager",
+    "auth-server-url": "http://localhost:9090/auth/",
+    "ssl-required": "external",
+    "resource": "release-note-manager",
+    "verify-token-audience": true,
+    "credentials": {
+      "secret": "0b59b6b6-e9c0-43c5-9346-f86545ebad10"
+    },
+    "use-resource-role-mappings": true,
+    "confidential-port": 0,
+    "policy-enforcer": {}
+  }
